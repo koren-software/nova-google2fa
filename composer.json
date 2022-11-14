@@ -1,5 +1,5 @@
 {
-    "name": "optimistdigital/nova-google2fa",
+    "name": "koren-software/nova-google2fa",
     "description": "This package provides Google2FA to Laravel Nova.",
     "keywords": [
         "laravel",
