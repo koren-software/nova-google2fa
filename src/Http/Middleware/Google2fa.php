@@ -34,6 +34,11 @@ class Google2fa
         if (auth()->guest() || $authenticator->isAuthenticated()) {
             return $next($request);
         }
+
+        if(!auth()->user()->mfa_enabled) {
+            return $next($request);
+        }
+
         if (empty(auth()->user()->user2fa) || auth()->user()->user2fa->google2fa_enable === 0) {
 
             $google2fa = new G2fa();
