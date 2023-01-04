@@ -117,6 +117,9 @@ class Google2fa extends Tool
         }
 
         if (app(Google2FAAuthenticator::class)->isAuthenticated()) {
+            auth()->user()->user2fa->last_auth = time();
+            auth()->user()->user2fa->save();
+
             return response()->redirectTo(config('nova.path'));
         }
 
