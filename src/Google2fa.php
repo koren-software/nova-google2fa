@@ -70,7 +70,7 @@ class Google2fa extends Tool
     private function isRecoveryValid($recover, $recoveryHashes)
     {
         foreach ($recoveryHashes as $recoveryHash) {
-            if (password_verify($recover, $recoveryHash)) {
+            if ($recover === $recoveryHash) {
                 return true;
             }
         }
@@ -117,6 +117,9 @@ class Google2fa extends Tool
         }
 
         if (app(Google2FAAuthenticator::class)->isAuthenticated()) {
+            auth()->user()->user2fa->last_auth = time();
+            auth()->user()->user2fa->save();
+
             return response()->redirectTo(config('nova.path'));
         }
 

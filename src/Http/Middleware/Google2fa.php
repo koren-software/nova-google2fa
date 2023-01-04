@@ -39,6 +39,11 @@ class Google2fa
             return $next($request);
         }
 
+        // Ask 2fa once a day, giving 24 hours window
+        if(time() - auth()->user()->user2fa->last_auth < 60 * 60 * 24) {
+            return $next($request);
+        }
+
         if (empty(auth()->user()->user2fa) || auth()->user()->user2fa->google2fa_enable === 0) {
 
             $google2fa = new G2fa();
