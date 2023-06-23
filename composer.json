@@ -9,7 +9,7 @@
     "require": {
         "php": "^8.0.2",
         "bacon/bacon-qr-code": "^2.0",
-        "pragmarx/google2fa-laravel": "^0.2.0",
+        "pragmarx/google2fa-laravel": "2.1.1",
         "pragmarx/recovery": "^0.2.1"
     },
     "autoload": {
